@@ -23,7 +23,7 @@ class Ninja:
         self.pet.noise()
         return self
 
-pet = pet.Dog("Apple", "rabbit", "cloning", 100, 40)
+pet = pet.Rabbit("Apple", "rabbit", "cloning")
 ninja = Ninja("Bob", "Keeper", "carrots", "carrot sticks", pet)
 ninja.walk()
 ninja.feed()

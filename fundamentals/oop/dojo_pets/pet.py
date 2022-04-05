@@ -1,11 +1,11 @@
 class Pet:
     # implement __init__( name , type , tricks ):
-    def __init__(self, name, typeOfPet, tricks, health, energy):
+    def __init__(self, name, typeOfPet, tricks):
         self.name = name
         self.type = typeOfPet
         self.tricks = tricks
-        self.health = health
-        self.energy = energy
+        self.health = 100
+        self.energy = 45
         
     # implement the following methods:
     # sleep() - increases the pets energy by 25
@@ -31,12 +31,12 @@ class Pet:
 
 # Sub-classes
 class Rabbit(Pet):
-    def __init__(self, name, typeOfPet, tricks, health, energy):
-        super().__init__(name, typeOfPet, tricks, health, energy)
+    def __init__(self, name, typeOfPet, tricks):
+        super().__init__(name, typeOfPet, tricks)
     
 class Dog(Pet):
-    def __init__(self, name, typeOfPet, tricks, health, energy):
-        super().__init__(name, typeOfPet, tricks, health, energy)
+    def __init__(self, name, typeOfPet, tricks):
+        super().__init__(name, typeOfPet, tricks)
     
     def noise(self):
         print(f"{self.name} woof")
