@@ -12,6 +12,7 @@
         - oop
             - bankAccount
             - users_with_bank_accounts
+            - modular_practice
 
 ---
 *Assignments not found on this repository can be found in a different repository on this account
