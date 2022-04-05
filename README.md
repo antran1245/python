@@ -3,14 +3,15 @@
 ### Current Directory
 
 - Python
-    - fundamentals
+    - [fundamentals](https://github.com/antran1245/python/tree/master/fundamentals)
         - fundamentals
             - recognize_python
         - introduction
             - organizing_files
             - testing_python
         - oop
-            -bankAccount
+            - bankAccount
+            - users_with_bank_accounts
 
 ---
 *Assignments not found on this repository can be found in a different repository on this account
