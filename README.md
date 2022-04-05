@@ -13,6 +13,10 @@
             - bankAccount
             - users_with_bank_accounts
             - modular_practice
+            - dojo_pets
+            - deck_of_cards
+            - ninjas_vs_pirates
+            - monty_python
 
 ---
 *Assignments not found on this repository can be found in a different repository on this account
