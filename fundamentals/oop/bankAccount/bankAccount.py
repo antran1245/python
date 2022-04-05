@@ -1,12 +1,12 @@
 class BankAccount:
+    all_accounts = []
     # don't forget to add some default values for these parameters!
-    info = []
     def __init__(self, int_rate = 0.01, balance = 0): 
         # your code here! (remember, instance attributes go here)
         # don't worry about user info here; we'll involve the User class soon
         self.int_rate = int_rate
         self.balance = balance
-        BankAccount.info.append(self)
+        BankAccount.all_accounts.append(self)
     def deposit(self, amount):
         # your code here
         self.balance += amount
@@ -41,8 +41,9 @@ class BankAccount:
         else:
             return False
     @classmethod
-    def print_all_instances(cls, amount):
-        return cls(balance = amount)
+    def print_all_instances(cls):
+        for account in cls.all_accounts:
+            print(f"Interest Rate - {account.int_rate}, Balance - {account.balance}")
 # Accounts
 tony = BankAccount()
 zac = BankAccount(balance = 200) # Initial with a balance of 200
@@ -62,5 +63,4 @@ zac.deposit(200).deposit(100).withdraw(30).withdraw(20).withdraw(100).withdraw(3
 
 # BONUS
 print("BONUS")
-kim = BankAccount.print_all_instances(200)
-kim.display_account_info()
+BankAccount.print_all_instances()
