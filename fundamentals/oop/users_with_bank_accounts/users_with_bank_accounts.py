@@ -11,14 +11,16 @@ class User:
             thisBankAccount = 0
             print("Outside the number of account you created. No deposit of", amount )
         self.all_accounts[thisBankAccount].deposit(amount)
+        return self
     def make_withdrawal(self, amount, thisBankAccount = 0):
         if(thisBankAccount > len(self.all_accounts)):
             thisBankAccount = 0
             print("Outside the number of account you created. No withdraw of", amount)
         self.all_accounts[thisBankAccount].withdraw(amount)
+        return self
     def display_user_balance(self, thisBankAccount = 0):
         print(f"User: {self.name}, Account: {thisBankAccount}, {self.all_accounts[thisBankAccount].display_account_info()}")
-
+        return self
     def transfer_money(self, amount, other, thisBankAccount = 0,  otherBankAccount = 0):
         if(self.all_accounts[thisBankAccount].can_withdraw(self.all_accounts[thisBankAccount].balance, amount)):
             
@@ -32,6 +34,7 @@ class User:
         else:
             print("Insufficient funds: Charging a $5 fee")
             self.all_accounts[thisBankAccount].balance -= 5
+        return self
 
 class BankAccount:
     # don't forget to add some default values for these parameters!
