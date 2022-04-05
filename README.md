@@ -17,6 +17,8 @@
             - deck_of_cards
             - ninjas_vs_pirates
             - monty_python
+        - extras
+            - store_and_products
 
 ---
 *Assignments not found on this repository can be found in a different repository on this account
