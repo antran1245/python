@@ -2,7 +2,7 @@ class User:
     def __init__(self, name, email, numAccount = 1):
         self.name = name
         self.email = email
-        self.all_accounts = []
+        self.all_accounts = [] 
         for num in range(numAccount):
             self.all_accounts.append(BankAccount(int_rate = 0.01, balance = 0))
             
