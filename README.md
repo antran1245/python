@@ -6,7 +6,7 @@
     - flask
         - fundamentals
             - hello_flask
-    - [fundamentals](https://github.com/antran1245/python/tree/master/fundamentals)
+    - fundamentals
         - fundamentals
             - recognize_python
         - introduction
