@@ -3,6 +3,9 @@
 ### Current Directory
 
 - Python
+    - flask
+        - fundamentals
+            - hello_flask
     - [fundamentals](https://github.com/antran1245/python/tree/master/fundamentals)
         - fundamentals
             - recognize_python
