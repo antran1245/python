@@ -1,15 +1,11 @@
-class Pirate:
+from classes.character import Character
+
+class Pirate(Character):
 
     def __init__( self , name ):
-        self.name = name
-        self.strength = 15
-        self.speed = 3
-        self.health = 100
-
-    def show_stats( self ):
-        print(f"Name: {self.name}\nStrength: {self.strength}\nSpeed: {self.speed}\nHealth: {self.health}\n")
+        super().__init__(name, 15, 3, 100)
 
     def attack ( self , ninja ):
-        ninja.health -= self.strength
+        super().attack(ninja, 70)
         return self
 
