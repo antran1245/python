@@ -6,6 +6,9 @@
     - flask
         - fundamentals
             - hello_flask
+            - checkerboard
+            - playground
+            - understanding_routing
     - fundamentals
         - fundamentals
             - recognize_python
