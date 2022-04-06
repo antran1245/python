@@ -13,13 +13,20 @@
             <table class="table">
                 <thead class="table-dark">
                     <tr>
-                        <th>First Name</th>
+                        <th class="text-center">First Name</th>
                         <th>Last Name</th>
                         <th>Full Name</th>
                     </tr>
                 </thead>
                 <tbody>
-                    {%%}
+                    {% for user in users %}
+                        <tr>
+                            {% for info in user.values() %}
+                                <th>{{info}}</th>
+                            {% endfor %}
+                            <th>{{user['first_name']}} {{user['last_name']}}</th>
+                        </tr>
+                    {% endfor %}
                 </tbody>
             </table>
         </div>
