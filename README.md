@@ -9,6 +9,7 @@
             - checkerboard
             - playground
             - understanding_routing
+            - html table
     - fundamentals
         - fundamentals
             - recognize_python
