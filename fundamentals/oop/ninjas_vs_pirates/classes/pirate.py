@@ -6,6 +6,7 @@ class Pirate(Character):
         super().__init__(name, 15, 3, 100)
 
     def attack ( self , ninja ):
-        super().attack(ninja, 70)
+        super().attack(ninja, 60)
         return self
+    
 
