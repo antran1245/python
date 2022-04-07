@@ -10,6 +10,7 @@
             - playground
             - understanding_routing
             - html table
+            - counter
     - fundamentals
         - fundamentals
             - recognize_python

@@ -12,7 +12,7 @@ def visit():
     if not session.get("visited") is None:
         visited = session["visited"]
     if request.method == "POST":
-        print(request.method)
+        #print(request.method)
         if request.form.get("add") == "Add":
             num = request.form.get("num")
             if(num != ""):
