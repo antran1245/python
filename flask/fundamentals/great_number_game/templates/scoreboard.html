@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+        <title>Great Number Game Scoreboard</title>
+    </head>
+
+    <body>
+        <div class="container">
+            <table>
+                <tr>
+                    <th>Name</th>
+                    <th>Tries</th>
+                </tr>
+                {% for player in scoreboard %}
+                    <tr>
+                        <td>{{player.name}}</td>
+                        <td>{{player.tries}}</td>
+                    </tr>
+                {% endfor %}
+            </table>
+            <form action="/reset" method="post">
+                <input type="submit" value="Play Again"/>
+            </form>
+        </div>
+    </body>
+
+</html>

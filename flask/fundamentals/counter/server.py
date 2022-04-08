@@ -17,7 +17,7 @@ def visit():
             num = request.form.get("num")
             if(num != ""):
                 counter += (int(num)-1)
-        elif request.form.get("add") == "Add + 2":
+        elif request.form["add"] == "Add + 2":
             counter += 1
         elif request.form.get("reset") == "Reset":
             counter = 0

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+        <title>Great Number Game</title>
+        <style>
+            :root {
+                --red: {{color}};
+                --low: {{low}};
+                --high: {{high}};
+                --correct: {{correct}};
+                --result: {{result}};
+                --lose: {{lose}};
+            }
+        </style>
+    </head>
+
+    <body>
+        <div class="container">
+            <h1>Welcome to the Great Number Game!</h1>
+            <p>I am thinking of a number between 1 and 100</p>
+            <p>Take a guess!</p>
+            <p>You have 5 tries.</p>
+            <div class="result"> 
+                <p class="low result-text"> Too low!</p>
+                <p class="high result-text"> Too high!</p>
+                <div class="correct">
+                    <p class="result-text">{{session['randomNum']}} was the number!</p>
+                    <p class="try-value">It took you {{session['tries']}} tries</p>
+                    <form action='/scoreboard' method="post">
+                        <input type="text" placeholder="Enter your name" name="name" autocomplete="off"/>
+                        <input type="submit" value="Submit" name="name_submit" />
+                    </form>
+                    <form action='/reset' method="post">
+                        <input type="submit" value="Play again!" name="play"/>
+                    </form>
+                </div>
+                <div class="lose result-text">
+                    <p>You Lose!</p>
+                    <form action='/reset' method="post">
+                        <input type="submit" value="Play again!"/>
+                    </form>
+                </div>
+            </div>
+            <form action="/guess" method="post">
+                <input type="text" name="num" placeholder="Enter a number" autocomplete="off"/>
+                <input type="submit" name="submitNum" action="submitting" value="My Guess"/>
+            </form>
+        </div>
+    </body>
+
+</html>

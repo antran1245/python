@@ -1,0 +1,101 @@
+*{
+    padding: 0px;
+    margin: 0px;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 50px;
+}
+
+.container > * {
+    margin-top: 20px;
+}
+
+.container > p {
+    font-size: larger;
+}
+
+.result {
+    background-color: var(--red);
+    border-radius: 10px;
+    border: 2px solid black;
+    display: var(--result);
+    padding: 100px 100px;
+    width: 200px;
+    height: 200px;
+    justify-content: center;
+    align-items: center;
+}
+
+.result .result-text {
+    color: white;
+    font-weight: bolder;
+    font-size: xx-large;
+    text-align: center;
+}
+
+.low {
+    display: var(--low);
+}
+
+.high {
+    display: var(--high);
+}
+
+.correct {
+    display: var(--correct);
+}
+
+.lose {
+    display: var(--lose);
+}
+
+.result .correct .try-value{
+    font-size: large;
+    text-align: center;
+    color: white;
+}
+
+.result .correct form input, .result .correct .try-value{
+    margin-top: 20px;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+form > * {
+    padding: 10px;
+}
+
+form input[type="submit"] {
+    margin-top: 10px;
+    cursor: pointer;
+    width: auto;
+    min-width: 100px;
+    background-color: white;
+    border: 2px solid black;
+    border-radius: 5px;
+    box-shadow: 2px 2px black;
+}
+
+form input[type="submit"]:active {
+    box-shadow: none;
+    transform: translate(2px, 2px);
+}
+
+table {
+    border-collapse: collapse;
+    width: 500px;
+}
+
+td, th {
+    padding: 10px;
+    border: 1px solid black;
+    text-align: center;
+}
