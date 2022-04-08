@@ -25,9 +25,8 @@ def startBattle(fighter1, fighter2):
             fighter1.attack(fighter2) #attack the other character
         else:
             # Invoke the flee function
-            flee = fighter2.flee()
             print(f"{fighter2.name} attempting to flee")
-            if(flee == "flee"):
+            if(fighter2.flee()):
                 print(f"{fighter2.name} ran away")
                 break
             else:
@@ -39,9 +38,8 @@ def startBattle(fighter1, fighter2):
         if(rand > 20):    
             fighter2.attack(fighter1)
         else:
-            flee = fighter1.flee()
             print(f"{fighter1.name} attempting to flee")
-            if(flee == "flee"):
+            if(fighter1.flee()):
                 print(f"{fighter1.name} ran away")
                 break
             else:

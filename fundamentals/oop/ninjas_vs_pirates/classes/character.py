@@ -15,13 +15,11 @@ class Character:
     def show_record(cls):
         for character in cls.all_character:
             print(character.record)
+            
     @staticmethod
     def flee():
         rand = random.randint(0, 100)
-        if rand > 50:
-            return "flee"
-        else:
-            return 0
+        return rand > 50
     
     def show_stats( self ):
         print(f"Name: {self.name}\nStrength: {self.strength}\nSpeed: {self.speed}\nHealth: {self.health}\n")
