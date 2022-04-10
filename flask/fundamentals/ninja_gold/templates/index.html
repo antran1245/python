@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="{{url_for('static', filename='style.css')}}">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+        <title>Ninja Gold</title>
+    </head>
+    <body>
+        <div class="container mt-5">
+            <div class="row d-flex align-items-center">
+                <div class="col-1">
+                    <p>Your Gold:</p>
+                </div>
+                <div class="col-3">
+                    <div id="gold">
+                            {{session['gold']}}
+                    </div>
+                </div>
+            </div>
+            <div class="row mt-3 d-flex flex-wrap">
+                <div class="col-2 box">
+                    <p class="title">Farm</p>
+                    <p class="amount_gold">(earn 10-20 golds)</p>
+                    <form action="/process_money" method="post">
+                        <input type="hidden" name="building" value="farm"/>
+                        <button type="submit" class="btn">Find Gold!</button>
+                    </form>
+                </div>
+                <div class="col-2 box">
+                    <p class="title">Cave</p>
+                    <p class="amount_gold">(earn 5-10 golds)</p>
+                    <form action="/process_money" method="post">
+                        <input type="hidden" name="building" value="cave"/>
+                        <button type="submit" class="btn">Find Gold!</button>
+                    </form>
+                </div>
+                <div class="col-2 box">
+                    <p class="title">House</p>
+                    <p class="amount_gold">(earn 2-5 golds)</p>
+                    <form action="/process_money" method="post">
+                        <input type="hidden" name="building" value="house"/>
+                        <button type="submit" class="btn">Find Gold!</button>
+                    </form>
+                </div>
+                <div class="col-2 box">
+                    <p class="title">Casino</p>
+                    <p class="amount_gold">(earn/takes 0-50 golds)</p>
+                    <form action="/process_money" method="post">
+                        <input type="hidden" name="building" value="casino"/>
+                        <button type="submit" class="btn">Find Gold!</button>
+                    </form>
+                </div>
+            </div>
+            <div class="row mt-3">
+                <p>Activities:</p>
+                <div class="activities-box">
+                    <ul>
+                        {{session['activities'] | safe}}
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

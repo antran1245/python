@@ -1,0 +1,48 @@
+* {
+    padding: 0px;
+    margin: 0px;
+}
+
+#gold {
+    border: 2px solid black;
+    padding: 0 10px;
+}
+
+.box {
+    padding: 40px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 5px;
+    min-width: 300px;
+    border: 2px solid black;
+}
+
+
+form .btn {
+    border: 2px solid black;
+    box-shadow: 2px 2px black;
+}
+
+form .btn:hover {
+    transform: translate(2px, 2px);
+    box-shadow: none;
+}
+
+.activities-box {
+    border: 2px solid black;
+    height: 200px;
+    overflow-y: scroll;
+}
+
+.activities-box ul {
+    list-style-type: none;
+}
+
+.green {
+    color: green;
+}
+
+.red {
+    color: red;
+}
