@@ -1,0 +1,26 @@
+INSERT INTO dojos (name, created_at) VALUES ('apple dojo', NOW());
+INSERT INTO dojos (name, created_at) VALUES ('pizza dojo', NOW());
+INSERT INTO dojos (name, created_at) VALUES ('cheese dojo', NOW());
+
+DELETE FROM dojos WHERE id=3 OR id=2 OR id=1;
+
+INSERT INTO dojos (name, created_at) VALUES ('apple dojo', NOW());
+INSERT INTO dojos (name, created_at) VALUES ('pizza dojo', NOW());
+INSERT INTO dojos (name, created_at) VALUES ('cheese dojo', NOW());
+
+INSERT INTO ninjas (first_name, last_name, age, dojo_id) VALUES ('Homer', 'Simpson',42, 4);
+INSERT INTO ninjas (first_name, last_name, age, dojo_id) VALUES ('Bob', 'Burger', 38, 4);
+INSERT INTO ninjas (first_name, last_name, age, dojo_id) VALUES ('Zac', 'League', 20, 4);
+
+INSERT INTO ninjas (first_name, last_name, age, dojo_id) VALUES ('SpongeBob', 'Squarepants',18, 5);
+INSERT INTO ninjas (first_name, last_name, age, dojo_id) VALUES ('Chicken', 'Burger', 28, 5);
+INSERT INTO ninjas (first_name, last_name, age, dojo_id) VALUES ('Master', 'Yi', 20, 5);
+
+INSERT INTO ninjas (first_name, last_name, age, dojo_id) VALUES ('I', 'Carly',28, 6);
+INSERT INTO ninjas (first_name, last_name, age, dojo_id) VALUES ('Barry', 'Allen', 25, 6);
+INSERT INTO ninjas (first_name, last_name, age, dojo_id) VALUES ('Bruce', 'Wayne', 32, 6);
+
+SELECT * FROM ninjas WHERE dojo_id=4;
+SELECT * FROM ninjas WHERE dojo_id=6;
+
+SELECT * FROM dojos WHERE id=6;
