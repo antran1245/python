@@ -1,0 +1,41 @@
+INSERT INTO authors (name, created_at) VALUES ("Jane Austen", NOW());
+INSERT INTO authors (name, created_at) VALUES ('Emily Dickinson', NOW());
+INSERT INTO authors (name, created_at) VALUES ('Fyodor Dostoevsky', NOW());
+INSERT INTO authors (name, created_at) VALUES ('William Shakespeare', NOW());
+INSERT INTO authors (name, created_at) VALUES ('Lau Tzu', NOW());
+
+INSERT INTO books (title, num_of_pages, created_at) VALUES ('C Sharp', 250, NOW());
+INSERT INTO books (title, num_of_pages, created_at) VALUES ('Java', 239, NOW());
+INSERT INTO books (title, num_of_pages, created_at) VALUES ('Python', 210, NOW());
+INSERT INTO books (title, num_of_pages, created_at) VALUES ('PHP', 242, NOW());
+INSERT INTO books (title, num_of_pages, created_at) VALUES ('Ruby', 190, NOW());
+
+UPDATE books SET title = 'C#' WHERE id=1;
+
+UPDATE authors SET name="Bill Shakespeare" WHERE id=4;
+
+INSERT INTO favorites (author_id, book_id) VALUES (1, 1);
+INSERT INTO favorites (author_id, book_id) VALUES (1,2);
+
+INSERT INTO favorites (author_id, book_id) VALUES (2,1);
+INSERT INTO favorites (author_id, book_id) VALUES (2,2);
+INSERT INTO favorites (author_id, book_id) VALUES (2,3);
+
+INSERT INTO favorites (author_id, book_id) VALUES (3,1);
+INSERT INTO favorites (author_id, book_id) VALUES (3,2);
+INSERT INTO favorites (author_id, book_id) VALUES (3,3);
+INSERT INTO favorites (author_id, book_id) VALUES (3,4);
+
+INSERT INTO favorites (author_id, book_id) VALUES (4,1);
+INSERT INTO favorites (author_id, book_id) VALUES (4,2);
+INSERT INTO favorites (author_id, book_id) VALUES (4,3);
+INSERT INTO favorites (author_id, book_id) VALUES (4,4);
+INSERT INTO favorites (author_id, book_id) VALUES (4,5);
+
+SELECT * FROM authors JOIN favorites ON authors.id=favorites.author_id WHERE favorites.book_id=3;
+
+DELETE FROM favorites WHERE author_id=2;
+
+SELECT * FROM books LEFT JOIN favorites ON books.id=favorites.book_id WHERE favorites.author_id=3;
+
+SELECT * FROM authors LEFT JOIN favorites ON authors.id=favorites.author_id WHERE favorites.book_id=5;
