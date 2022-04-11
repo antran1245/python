@@ -8,9 +8,13 @@
             - hello_flask
             - checkerboard
             - playground
-            - understanding_routing
+            - understanding routing
             - html table
             - counter
+            - dojo survey
+            - greater number game
+            - ninja gold
+            - form test
     - fundamentals
         - fundamentals
             - recognize_python
@@ -28,6 +32,9 @@
         - extras
             - store_and_products
             - MathDojo
+    - mysql
+        - queries
+            - mysql workbench setup
 
 ---
 *Assignments not found on this repository can be found in a different repository on this account
