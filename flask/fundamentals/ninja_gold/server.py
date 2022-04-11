@@ -38,7 +38,7 @@ def process():
     session['gold'] += randGold
     return redirect('/')
 
-@app.route('/reset')
+@app.route('/reset', methods=['POST'])
 def reset():
     session.clear()
     return redirect('/')
