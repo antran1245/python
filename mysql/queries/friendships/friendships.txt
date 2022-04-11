@@ -1,0 +1,35 @@
+INSERT INTO users (first_name, last_name) VALUES ('Amy', 'Giver');
+INSERT INTO users (first_name, last_name) VALUES ('Eli', 'Byers');
+INSERT INTO users (first_name, last_name) VALUES ('Marky', 'Mark');
+INSERT INTO users (first_name, last_name) VALUES ('Big','Bird');
+INSERT INTO users (first_name, last_name) VALUES ('Kermit', 'The Forg');
+INSERT INTO users (first_name, last_name) VALUES ('Apple', 'Pie');
+
+INSERT INTO friendships (user_id, friend_id) VALUES (1,2);
+INSERT INTO friendships (user_id, friend_id) VALUES (1,4);
+INSERT INTO friendships (user_id, friend_id) VALUES (1,6);
+
+INSERT INTO friendships (user_id, friend_id) VALUES (2,1);
+INSERT INTO friendships (user_id, friend_id) VALUES (2,3);
+INSERT INTO friendships (user_id, friend_id) VALUES (2,5);
+
+INSERT INTO friendships (user_id, friend_id) VALUES (3,2);
+INSERT INTO friendships (user_id, friend_id) VALUES (3,5);
+
+INSERT INTO friendships (user_id, friend_id) VALUES (4,3);
+
+INSERT INTO friendships (user_id, friend_id) VALUES (5,1);
+INSERT INTO friendships (user_id, friend_id) VALUES (5,6);
+
+INSERT INTO friendships (user_id, friend_id) VALUES (6,2);
+INSERT INTO friendships (user_id, friend_id) VALUES (6,3);
+
+SELECT users.first_name, users.last_name, user2.first_name as friend_first_name, user2.last_name as friend_last_name FROM users JOIN friendships ON friendships.friend_id = users.id LEFT JOIN users as user2 ON friendships.user_id=user2.id;
+
+SELECT users.first_name, users.last_name, user2.first_name as friend_first_name, user2.last_name as friend_last_name FROM users JOIN friendships ON friendships.friend_id = users.id LEFT JOIN users as user2 ON friendships.user_id=user2.id WHERE users.id=1;
+
+SELECT SUM(LENGTH(friend_id)) FROM friendships;
+
+SELECT friend_id, SUM(LENGTH(friend_id)) AS result FROM friendships GROUP BY friend_id ORDER BY result DESC
+
+SELECT users.first_name, users.last_name, user2.first_name AS friend_first_name, user2.last_name AS friend_last_name FROM users JOIN friendships ON friendships.user_id=users.id LEFT JOIN users as user2 ON friendships.friend_id=user2.id WHERE users.id=3 ORDER BY friend_first_name;
