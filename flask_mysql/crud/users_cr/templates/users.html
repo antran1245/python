@@ -28,7 +28,7 @@
                                 <th>{{user.id}}</th>
                                 <th>{{user.first_name}} {{user.last_name}}</th>
                                 <th>{{user.email}}</th>
-                                <th>{{user.created_at}}</th>
+                                <th>{{user.created_at.strftime('%B %d, %Y')}}</th>
                             </tr>
                         {% endfor %}
                     </tbody>
