@@ -1,0 +1,23 @@
+-- 1)
+SELECT first_name, last_name, email, address FROM customer JOIN address ON customer.address_id=address.address_id WHERE address.city_id=312;
+
+-- 2)
+SELECT title, description, release_year, rating, special_features, category.name as genre FROM film JOIN film_category ON film.film_id=film_category.film_id LEFT JOIN category ON category.category_id=film_category.category_id WHERE category.name="comedy";
+
+-- 3)
+SELECT actor.actor_id, CONCAT_WS(" ", actor.first_name, actor.last_name) AS name, title, description, release_year FROM film JOIN film_actor ON film.film_id=film_actor.film_id LEFT JOIN actor ON film_actor.actor_id=actor.actor_id WHERE actor.actor_id=5;
+
+-- 4)
+SELECT first_name, last_name, email, address FROM customer JOIN address ON customer.address_id = address.address_id WHERE store_id=1 AND (address.city_id=1 OR address.city_id=42 OR address.city_id=312 OR address.city_id=459);
+
+-- 5)
+SELECT title, description, release_year, rating, special_features FROM film JOIN film_actor ON film.film_id=film_actor.film_id WHERE film_actor.actor_id=15 AND rating="G" AND special_features LIKE "%behind the scenes%";
+
+-- 6)
+SELECT film_actor.film_id, film.title, film_actor.actor_id, CONCAT_WS(" ", first_name, last_name) AS name FROM actor JOIN film_actor ON actor.actor_id=film_actor.actor_id LEFT JOIN film ON film.film_id=film_actor.film_id WHERE film_actor.film_id=369;
+
+-- 7)
+SELECT title, description, release_year, rating, special_features, category.name AS genre FROM film JOIN film_category ON film.film_id=film_category.film_id LEFT JOIN category ON film_category.category_id=category.category_id WHERE category.name="drama" AND rental_rate=2.99;
+
+-- 8)
+SELECT title, description, release_year, rating, special_features, category.name AS genre, actor.first_name, actor.last_name FROM film JOIN film_category ON film.film_id=film_category.film_id LEFT JOIN category ON film_category.category_id=category.category_id LEFT JOIN film_actor ON film_actor.film_id=film.film_id LEFT JOIN actor ON film_actor.actor_id=actor.actor_id WHERE category.name="action" AND actor.first_name="SANDRA" AND actor.last_name="KILMER";
