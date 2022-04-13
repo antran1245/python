@@ -39,7 +39,7 @@ def showUser(user):
         "id": user
     }
     user = User.select_user(data)
-    print(user)
+    # print(user)
     return render_template('show_user.html', user=user)
 
 @app.route('/users/<int:user>/edit')
