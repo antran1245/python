@@ -20,6 +20,7 @@
                             <th>Full Name</th>
                             <th>Email</th>
                             <th>Created At</th>
+                            <th>Actions</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -29,6 +30,11 @@
                                 <th>{{user.first_name}} {{user.last_name}}</th>
                                 <th>{{user.email}}</th>
                                 <th>{{user.created_at.strftime('%B %d, %Y')}}</th>
+                                <th>
+                                    <a href="{{url_for('showUser', user=user.id)}}">Show</a>
+                                    <a href="{{url_for('editUser', user=user.id)}}">Edit</a>
+                                    <a href="{{url_for('deleteUser', user=user.id)}}">Delete</a>
+                                </th>
                             </tr>
                         {% endfor %}
                     </tbody>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+        <link rel="stylesheet" href="{{url_for('static', filename='style.css')}}">
+        <title>Read (One)</title>
+    </head>
+    <body>
+        <div class="container">
+            <div class="row d-flex justify-content-between align-items-center">
+                <div class="col-6">
+                    <h1>User {{user[0].id}}</h1>
+                </div>
+                <div class="col-1">
+                    <a href="/users">Home</a>
+                </div>
+            </div>
+            <div class="row mb-3">
+                <div class="box">
+                    <div class="row mb-3">
+                        <p>Full Name: {{user[0].first_name}} {{user[0].last_name}}</p>
+                    </div>
+                    <div class="row mb-3">
+                        <p>Email: {{user[0].email}}</p>
+                    </div>
+                    <div class="row mb-3">
+                        <p>Created On: {{user[0].created_at}}</p>
+                    </div>
+                    <div class="row">
+                        <p>Last Updated On: {{user[0].updated_at}}</p>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-1">
+                    <a href="{{url_for('editUser', user=user[0].id)}}">Edit</a>
+                </div>
+                <div class="col-1">
+                    <a href="{{url_for('deleteUser', user=user[0].id)}}">Delete</a>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
