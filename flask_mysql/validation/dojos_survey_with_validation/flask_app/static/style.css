@@ -49,3 +49,7 @@ body .smaller {
 .result p {
     font-size: x-large;
 }
+
+.container .error {
+    color: red;
+}
