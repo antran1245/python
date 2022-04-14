@@ -31,5 +31,6 @@ def processAddAuthor():
     data = {
         "name": request.form['name']
     }
-    Author.insert(data)
-    return redirect('/')
+    author = Author.insert(data)
+    
+    return redirect(url_for('showAuthor', id=author))

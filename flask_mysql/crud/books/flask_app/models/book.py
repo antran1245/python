@@ -58,7 +58,7 @@ class Book:
     
     @classmethod
     def notFavorite(cls,data):
-        query = "SELECT * FROM books LEFT JOIN favorites ON books.id=favorites.book_id LEFT JOIN authors ON authors.id=favorites.author_id WHERE authors.id=%(id)s;"
+        query = "SELECT * FROM books LEFT JOIN favorites ON books.id=favorites.book_id LEFT JOIN authors ON authors.id=favorites.author_id WHERE books.id=%(id)s;"
         result = connectToMySQL(database).query_db(query, data)
         authors = []
         all_authors = author.Author.get_all()

@@ -11,7 +11,6 @@ def processAddBookFavorite(id):
         "book_id" : id
     }
     Favorite.insert(data)
-    print('here')
     return redirect(url_for('showBook', id=id))
 
 @app.route('/process/add/author/add/<int:id>', methods=['POST'])
@@ -21,5 +20,4 @@ def processAddAuthorFavorite(id):
         "author_id" : id
     }
     Favorite.insert(data)
-    print('here')
     return redirect(url_for('showAuthor', id=id))

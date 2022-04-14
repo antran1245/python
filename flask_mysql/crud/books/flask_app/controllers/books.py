@@ -28,5 +28,5 @@ def processAddBook():
         "title": request.form['name'],
         "num_of_pages": request.form['pages']
     }
-    Book.insert(data)
-    return redirect('/books')
+    book = Book.insert(data)
+    return redirect(url_for('showBook', id=book))
