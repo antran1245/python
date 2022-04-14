@@ -5,7 +5,6 @@ from flask_app.models.dojo import Dojo
 
 @app.route('/')
 def form():
-    session.clear()
     return render_template('form.html')
 
 @app.route('/process', methods=["POST"])
@@ -33,3 +32,8 @@ def result(id):
     data = {"id": id}
     filled = Dojo.select(data)
     return render_template('result.html', info=filled)
+
+@app.route('/reset')
+def reset():
+    session.clear()
+    return redirect('/')
