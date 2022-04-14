@@ -1,0 +1,108 @@
+* {
+    padding: 0px;
+    margin: 0px;
+}
+/* container */
+.container {
+    display: flex;
+    padding: 20px;
+}
+
+/* left and right columns */
+.left, .right {
+    flex: 1;
+}
+.container .left {
+    height: 180px;
+}
+.left, .right, .one-col{
+    background-color: rgb(143, 84, 199);
+    margin: 10px;
+    padding: 20px;
+    border-radius: 10px;
+}
+.left, .right, form, form div, .dojo-listing {
+    display: flex;
+    flex-direction: column;
+}
+.left h2, .right h2, .one-col h2{
+    margin-bottom: 20px;
+    text-align: center;
+    font-size: xx-large;
+}
+
+/* form */
+form {
+    width: 100%;
+}
+form div label {
+    font-size: large;
+    color: white;
+}
+form div *, form button, .dojo-listing{
+    margin-top: 10px;
+}
+form div input, form button, form div select {
+    padding: 10px;
+}
+form button {
+    width: 30%;
+    background-color: rgb(36, 36, 175);
+    border: none;
+    color: white;
+    border-radius: 10px;
+    box-shadow: 2px 2px black;
+}
+form button:active {
+    transform: translate(2px, 2px);
+    box-shadow: none;
+}
+
+/* listing dojo */
+.dojo-listing * {
+    margin-bottom: 10px;
+    font-size: x-large;
+    text-align: center;
+}
+.right > a {
+    margin: auto 0;
+}
+.right a, .one-col a {
+    color: white;
+    text-decoration: none;
+}
+.right a:hover {
+    color: blue;
+}
+
+/* one column */
+.one-col {
+    width: 50%;
+    min-width: 350px;
+    height: auto;
+}
+.one-col form{
+    margin-bottom: 10px;
+}
+/* table */
+table {
+    margin: auto;
+    color: white;
+    border-collapse: collapse;
+}
+table th, table td {
+    padding: 10px;
+}
+table, th, td {
+    border: 1px solid black;
+}
+table tr:nth-child(even) {
+    background-color: blueviolet;
+}
+table th {
+    background-color: black;
+}
+table .row:hover {
+    background-color: white;
+    color: black;
+}

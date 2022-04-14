@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="{{url_for('static', filename="style.css")}}">
+        <title>Dojo Show</title>
+    </head>
+    <body>
+        <div class="container">
+            <div class="one-col">
+                <!-- pass the ninja and dojo info -->
+                <h2>{{dojo[0]['name']}} Ninja</h2>
+                <table>
+                    <tr>
+                        <th>First Name</th>
+                        <th>Last Name</th>
+                        <th>Age</th>
+                    </tr>
+                    <!-- pass the ninjas-->
+                    {% for ninja in ninjas  %}
+                        <tr class="row">
+                            <td>{{ninja['first_name']}}</td>
+                            <td>{{ninja['last_name']}}</td>
+                            <td>{{ninja['age']}}</td>
+                        </tr>
+                    {% endfor%}
+                </table>
+                <a href="/">Home</a>
+            </div>
+        </div>
+    </body>
+</html>
