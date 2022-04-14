@@ -4,29 +4,29 @@
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" href="{{url_for('static', filename="style.css")}}">
-        <title>Dojos</title>
+        <link rel="stylesheet" href="{{url_for('static', filename='style.css')}}">
+        <title>Authors</title>
     </head>
     <body>
         <div class="container">
             <div class="left">
-                <h2>New Dojo</h2>
-                <form action="/process/create/dojos" method="post">
+                <h2>New Author</h2>
+                <form action="/process/add/author" method="post">
                     <div>
                         <label for="name">Name: </label>
-                        <input type="text" name="name" placeholder="Enter Dojo Name">
+                        <input type="text" name="name" placeholder="Enter Author Name" autocomplete="off">
                     </div>
                     <button type="submit" class="btn">Create</button>
                 </form>
             </div>
             <div class="right">
-                <h2>All Dojos</h2>
-                <div class="dojo-listing">
-                    {% for dojo in dojos %}
-                        <a href="{{url_for('showDojo', id=dojo.id)}}">{{dojo.name}}</a>
+                <h2>All Authors</h2>
+                <div class="listing">
+                    {% for author in authors %}
+                        <a href="{{url_for('showAuthor', id=author.id)}}">{{author.name}}</a>
                     {% endfor %}
                 </div>
-                <a href="/ninjas">Add Ninja</a>
+                <a href="/books">Add Book</a>
             </div>
         </div>
     </body>
