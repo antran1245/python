@@ -25,16 +25,6 @@ body {
     color: gold;
 }
 
-.checkerName {
-    outline: var(--name);
-}
-.checkerLocation {
-    outline: var(--location);
-}
-.checkerLanguage {
-    outline: var(--language);
-}
-
 body .smaller {
     width: 50%;
     min-width: 400px;

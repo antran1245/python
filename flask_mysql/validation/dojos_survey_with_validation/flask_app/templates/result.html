@@ -9,12 +9,12 @@
     </head>
     <body>
         <div class="container result">
-            <h1>{{session['name']}}</h1>
-            <p>Dojo Location: {{session['location']}}</p>
-            <p>Favorite Language: {{session['language']}}</p>
+            <h1>{{info[0].name}}</h1>
+            <p>Dojo Location: {{info[0].location}}</p>
+            <p>Favorite Language: {{info[0].language}}</p>
             <p>
-                {% if "comment" in session%}
-                    Comment: {{session['comment']}}
+                {% if info[0].comment != ""%}
+                    Comment: {{info[0].comment}}
                 {% endif %}
             </p>
             <p>
