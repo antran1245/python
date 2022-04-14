@@ -4,7 +4,7 @@ from flask import render_template,redirect,request,session, url_for
 from flask_app.models.dojo import Dojo
 from flask_app.models.ninja import Ninja
 
-# Display Route
+# Display Routes
 @app.route('/')
 def main():
     return redirect('/dojos')
@@ -28,7 +28,7 @@ def showDojo(id):
     dojo = Dojo.read_dojo(data)
     return render_template('dojo_show.html', ninjas=ninjas, dojo=dojo)
 
-# Action route
+# Action/form routes 
 @app.route('/process/create/dojos', methods=['POST'])
 def processCreateDojos():
     data = {

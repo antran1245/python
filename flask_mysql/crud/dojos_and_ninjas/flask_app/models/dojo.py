@@ -14,7 +14,6 @@ class Dojo:
     @classmethod
     def get_all(cls):
         query = "SELECT * FROM dojos;"
-        # make sure to call the connectToMySQL function with the schema you are targeting.
         results = connectToMySQL(database).query_db(query)
         dojos = []
         # Iterate over the db results and create instances of dojos with cls.
@@ -22,16 +21,19 @@ class Dojo:
             dojos.append( cls(dojo) )
         return dojos
     
+    # Create a new dojo entry
     @classmethod
     def create_dojo(cls, data ):
         query = "INSERT INTO dojos ( name, created_at, updated_at ) VALUES ( %(name)s , NOW() , NOW() );"
         return connectToMySQL(database).query_db( query, data )
 
+    # Read one row in dojos
     @classmethod
     def read_dojo(cls,data):
         query = "SELECT * FROM dojos WHERE id = %(id)s;"
         return connectToMySQL(database).query_db(query, data)
     
+    # Get all the ninja then create instance of them into a list
     @classmethod
     def get_all_ninjas(cls, data):
         query = "SELECT * FROM dojos LEFT JOIN ninjas ON ninjas.dojo_id=dojos.id WHERE dojos.id=%(id)s;"
