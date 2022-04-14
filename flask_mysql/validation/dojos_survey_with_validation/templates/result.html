@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+        <title>Document</title>
+    </head>
+    <body>
+        <div class="container result">
+            <h1>{{session['name']}}</h1>
+            <p>Dojo Location: {{session['location']}}</p>
+            <p>Favorite Language: {{session['language']}}</p>
+            <p>
+                {% if "comment" in session%}
+                    Comment: {{session['comment']}}
+                {% endif %}
+            </p>
+            <p>
+                {%if "color" in session%}
+                    Color: {{session['color']}}
+                {% endif %}
+            </p>
+            <p>
+                {%if "food" in session%}
+                    Favorite Food to eat: {{session['food']}}
+                {% endif %}
+            </p>
+            <a href="/">Home</a>
+        </div>
+    </body>
+</html>

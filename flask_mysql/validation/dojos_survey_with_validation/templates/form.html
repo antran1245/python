@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+        <title>Document</title>
+        <style>
+            :root{
+                --name: {{name}};
+                --location: {{location}};
+                --language: {{language}};
+            }
+        </style>
+    </head>
+    <body>
+        <div class="container smaller">
+            <h1>Dojo Survey</h1>
+            <form action="/process" method="post">
+                <div class="mb-3">
+                    <label for="name" class="form-label">Name:</label>
+                    <input type="text" class="form-control checkerName" name="name" autocomplete="off" value="{{session['name']}}" />
+                </div>
+                <div class="mb-3">
+                    <label for="location" class="form-label">Dojo Location:</label>
+                    <select class="form-select checkerLocation" name="location" autocomplete="off">
+                        <option value="default">-- Select A Location --</option>
+                        <option value="Chicago">Chicago</option>
+                        <option value="New York">New York</option>
+                        <option value="San Jose">San Jose</option>
+                        <option value="Seattle">Seattle</option>
+                        <option value="Remote">Remote</option>
+                    </select>
+                </div>
+                <div class="mb-3">
+                    <label for="language" class="form-label">Favorite Language:</label>
+                    <select name="language" class="form-select checkerLanguage" autocomplete="off">
+                        <option value="default">-- Select A Language --</option>
+                        <option value="C#">C#</option>
+                        <option value="HTML">HTML</option>
+                        <option value="Java">Java</option>
+                        <option value="JavaScript">JavaScript</option>
+                        <option value="Python">Python</option>
+                    </select>
+                </div>
+                <div class="mb-3">
+                    <p>Favorite Between RGB (Optional):</p>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="radioColor" value="Red">
+                        <label class="form-check-label">Red</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="radioColor" value="Green">
+                        <label class="form-check-label">Green</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="radioColor" value="Blue">
+                        <label class="form-check-label">Blue</label>
+                    </div>
+                </div>
+                <div class="mb-3">
+                    <p>Favorite Food (Optional):</p>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="checkbox" name="checkFood" value="Burger">
+                        <label class="form-check-label">Burger</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="checkbox" name="checkFood" value="Pizza">
+                        <label class="form-check-label">Pizza</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="checkbox" name="checkFood" value="Taco">
+                        <label class="form-check-label">Taco</label>
+                    </div>
+                </div>
+                <div class="mb-3">
+                    <label for="comment" class="form-label">Comment (optional):</label>
+                    <textarea class="form-control" name="comment" cols="30" rows="10"></textarea>
+                </div>
+                <div class="mb-3">
+                    <button type="submit" class="btn btn-warning">Submit</button>
+                </div>
+            </form>
+        </div>
+    </body>
+</html>
