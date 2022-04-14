@@ -16,7 +16,7 @@
     height: 180px;
 }
 .left, .right, .one-col{
-    background-color: rgb(143, 84, 199);
+    background-color: rgb(80, 51, 107);
     margin: 10px;
     padding: 20px;
     border-radius: 10px;
@@ -29,6 +29,7 @@
     margin-bottom: 20px;
     text-align: center;
     font-size: xx-large;
+    color: white;
 }
 
 /* form */

@@ -12,7 +12,6 @@ def main():
 @app.route('/dojos')
 def dojos():
     dojos = Dojo.get_all()
-    print(dojos)
     return render_template('dojos.html', dojos=dojos) 
 
 @app.route('/ninjas')
@@ -26,8 +25,8 @@ def showDojo(id):
         "id": id
     }
     ninjas = Dojo.get_all_ninjas(data)
-    print(ninjas)
-    return render_template('dojo_show.html', ninjas=ninjas)
+    dojo = Dojo.read_dojo(data)
+    return render_template('dojo_show.html', ninjas=ninjas, dojo=dojo)
 
 # Action route
 @app.route('/process/create/dojos', methods=['POST'])

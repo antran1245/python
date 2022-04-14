@@ -1,6 +1,8 @@
 # import the function that will return an instance of a connection
 from flask_app.config.mysqlconnection import connectToMySQL
 # model the class after the dojo table from our database
+from flask_app.models.ninja import Ninja
+
 database = 'dojos_and_ninjas_schema'
 class Dojo:
     def __init__( self , data ):
@@ -27,7 +29,7 @@ class Dojo:
 
     @classmethod
     def read_dojo(cls,data):
-        query = "SELECT * FROM dojos WHERE id = %(dojo_id)s;"
+        query = "SELECT * FROM dojos WHERE id = %(id)s;"
         return connectToMySQL(database).query_db(query, data)
     
     @classmethod
@@ -36,5 +38,13 @@ class Dojo:
         result = connectToMySQL(database).query_db( query, data )
         ninjas = []
         for ninja in result:
-            ninjas.append(ninja)
+            data = {
+                "id" : ninja['id'],
+                "first_name" : ninja['first_name'],
+                "last_name" : ninja['last_name'],
+                "age" : ninja['age'],
+                "created_at" : ninja['created_at'],
+                "updated_at" : ninja['updated_at']
+            }
+            ninjas.append(Ninja(data))
         return ninjas
