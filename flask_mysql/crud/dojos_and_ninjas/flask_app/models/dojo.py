@@ -27,5 +27,14 @@ class Dojo:
 
     @classmethod
     def read_dojo(cls,data):
-        query = "SELECT * FROM dojos WHERE id = %(dojo_id)s"
+        query = "SELECT * FROM dojos WHERE id = %(dojo_id)s;"
         return connectToMySQL(database).query_db(query, data)
+    
+    @classmethod
+    def get_all_ninjas(cls, data):
+        query = "SELECT * FROM dojos LEFT JOIN ninjas ON ninjas.dojo_id=dojos.id WHERE dojos.id=%(id)s;"
+        result = connectToMySQL(database).query_db( query, data )
+        ninjas = []
+        for ninja in result:
+            ninjas.append(ninja)
+        return ninjas

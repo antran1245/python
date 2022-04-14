@@ -23,12 +23,11 @@ def create_ninja():
 @app.route('/dojo/<int:id>')
 def showDojo(id):
     data = {
-        "dojo_id": id
+        "id": id
     }
-    ninjas = Ninja.dojo_ninjas(data)
-    dojo = Dojo.read_dojo(data)
+    ninjas = Dojo.get_all_ninjas(data)
     print(ninjas)
-    return render_template('dojo_show.html', ninjas=ninjas, dojo=dojo)
+    return render_template('dojo_show.html', ninjas=ninjas)
 
 # Action route
 @app.route('/process/create/dojos', methods=['POST'])
