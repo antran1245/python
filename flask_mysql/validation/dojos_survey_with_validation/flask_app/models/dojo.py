@@ -18,7 +18,7 @@ class Dojo:
     def get_all(cls):
         query = "SELECT * FROM dojos"
         
-        result = connectToMySQL(database).query_db(query, data)
+        result = connectToMySQL(database).query_db(query)
         
         dojos = []
         for dojo in result:

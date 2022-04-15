@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="{{url_for('static', filename="style.css")}}">
+        <title>Succecss Page</title>
+    </head>
+    <body>
+        <div class="container">
+            <div class="green-box">
+                <p>The email address you entered (  ) is a VALID email address! Thank You!</p>
+            </div>
+            <h1 id="title">
+                Email Addresses Entered:
+            </h1>
+            <table>
+                {% for email in emails %}
+                <tr>
+                    <td>{{email.address}} </td>
+                    <td> {{email.created_at.strftime("%B %d, %Y %I:%M%p")}}</td>
+                    <td> <a href="{{url_for('delete', id=email.id)}}">Delete</a></td>
+                </tr>
+                {% endfor %}
+            </table>
+        </div>
+    </body>
+</html>
