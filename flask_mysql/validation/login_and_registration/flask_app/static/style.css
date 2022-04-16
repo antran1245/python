@@ -1,0 +1,90 @@
+* {
+    padding: 0px;
+    margin: 0px;
+}
+body {
+    background-color: rgb(100, 50, 50);
+}
+/* Container */
+.container {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    padding: 20px;
+}
+
+/* Dashboard */
+.dashboard {
+    flex-direction: column;
+    align-items: center;
+}
+.dashboard * {
+    margin-bottom: 20px;
+}
+.dashboard button {
+    padding: 10px 20px;
+    font-weight: bolder;
+    box-shadow: 2px 2px 2px black;
+}
+
+.dashboard button:active {
+    transform: translate(2px,2px);
+    box-shadow: none;
+}
+
+/* Col and Box */
+.col {
+    margin: auto;
+}
+.box {
+    background-color: rgb(66, 72, 94);
+    padding: 20px;
+    color: white;
+    font-weight: bold;
+    border-radius: 10px;
+    width: 300px;
+    margin-top: 10px;
+}
+.box h1 {
+    color: rgb(255, 166, 0);
+}
+
+/* Form */
+form div {
+    margin: 10px 0;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+}
+form div label {
+    margin: 0 0 10px 0;
+}
+form div input {
+    padding: 10px 10px;
+}
+form div button {
+    width: 40%;
+    padding: 10px;
+    border: none;
+    border-radius: 10px;
+    color: white;
+    font-size: larger;
+}
+form .submit {
+    background-color: rgb(9, 134, 243);
+}
+form .login {
+    background-color: rgb(135, 190, 172);
+}
+form .checkbox-form {
+    display: inline-block;
+    
+}
+
+
+/* error */
+.error {
+    color: red;
+    font-size: medium;
+    font-weight: normal;
+}

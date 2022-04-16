@@ -10,6 +10,7 @@ class Dojo:
         self.name = data['name']
         self.created_at = data['created_at']
         self.updated_at = data['updated_at']
+        self.ninjas = []
     # Now we use class methods to query our database
     @classmethod
     def get_all(cls):
@@ -31,14 +32,16 @@ class Dojo:
     @classmethod
     def read_dojo(cls,data):
         query = "SELECT * FROM dojos WHERE id = %(id)s;"
-        return connectToMySQL(database).query_db(query, data)
+        result =connectToMySQL(database).query_db(query, data)
+        dojo = cls(result[0])
+        return dojo
     
     # Get all the ninja then create instance of them into a list
     @classmethod
     def get_all_ninjas(cls, data):
         query = "SELECT * FROM dojos LEFT JOIN ninjas ON ninjas.dojo_id=dojos.id WHERE dojos.id=%(id)s;"
         result = connectToMySQL(database).query_db( query, data )
-        ninjas = []
+        dojo = cls(result[0])
         for ninja in result:
             data = {
                 "id" : ninja['id'],
@@ -48,5 +51,5 @@ class Dojo:
                 "created_at" : ninja['created_at'],
                 "updated_at" : ninja['updated_at']
             }
-            ninjas.append(Ninja(data))
-        return ninjas
+            dojo.ninjas.append(Ninja(data))
+        return dojo

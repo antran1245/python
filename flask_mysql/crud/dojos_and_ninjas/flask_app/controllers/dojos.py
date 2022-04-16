@@ -24,9 +24,8 @@ def showDojo(id):
     data = {
         "id": id
     }
-    ninjas = Dojo.get_all_ninjas(data)
-    dojo = Dojo.read_dojo(data)
-    return render_template('dojo_show.html', ninjas=ninjas, dojo=dojo)
+    dojo = Dojo.get_all_ninjas(data)
+    return render_template('dojo_show.html', dojo=dojo)
 
 # Action/form routes 
 @app.route('/process/create/dojos', methods=['POST'])
