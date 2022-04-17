@@ -6,21 +6,22 @@ from flask_app.models.user import User
 # Display routes
 @app.route('/')
 def index():
-    return render_template('index.html')
+    return redirect('/dashboard')
+    # return render_template('index.html')
 
-@app.route('/dashboard')
-def showDashboard():
-    if 'remember' in session:
-        if 'uuid' in session:
-            data = {
-                "id" : session['uuid']
-            }
-            user = User.select(data)
-            if session['remember'] == 'off':
-                del session['uuid']
-                del session['remember']
-            return render_template('dashboard.html', user=user)
-    return redirect('/')
+# @app.route('/dashboard')
+# def showDashboard():
+#     if 'remember' in session:
+#         if 'uuid' in session:
+#             data = {
+#                 "id" : session['uuid']
+#             }
+#             user = User.select(data)
+#             if session['remember'] == 'off':
+#                 del session['uuid']
+#                 del session['remember']
+#             return render_template('dashboard.html', user=user)
+#     return redirect('/')
 
 @app.route('/logout')
 def logout():
@@ -62,3 +63,4 @@ def processLogin():
         if not User.validate_login(request.form):
             return redirect('/')
     return redirect('/dashboard')
+

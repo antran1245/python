@@ -9,8 +9,33 @@
     </head>
     <body>
         <div class="container dashboard">
-            <h1>Welcome {{user.first_name}}!!!!</h1>
-            <p>The remember checkbox will allow you to log in again without inputting email and password. Work only when Logout is not click.</p>
+            <h1>Welcome !!!!</h1>
+            <div class="message-board">
+                <div>
+                    <h3><span>{{messages|length}}</span> Messages</h3>
+                    {% for message in messages %}
+                        <div>
+                            <p>{{message.friend_first_name}} {{message.friend_last_name}} said </p>
+                            <p>"{{message.content}}"</p>
+                        </div>
+                    {% endfor %}
+                    
+                </div>
+                <div>
+                    <h3>Send Messages</h3>
+                    {% for user in friends %}
+                        <form action="/send/{{user.id}}/{{user.friend_id}}" method="post" class="message-form">
+                            <div>
+                                <label for="message">{{user.friend_first_name}} {{user.friend_last_name}}</label>
+                                <textarea name="message" rows="3" cols="4" wrap="hard"></textarea>
+                            </div>
+                            <div>
+                                <input type="submit" value="Send"/>
+                            </div>
+                        </form>
+                    {% endfor %}
+                </div>
+            </div>
             <a href="/logout"><button class="logout">Logout</button></a>
         </div>
     </body>

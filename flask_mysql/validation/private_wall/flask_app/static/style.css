@@ -13,25 +13,6 @@ body {
     padding: 20px;
 }
 
-/* Dashboard */
-.dashboard {
-    flex-direction: column;
-    align-items: center;
-}
-.dashboard * {
-    margin-bottom: 20px;
-}
-.dashboard button {
-    padding: 10px 20px;
-    font-weight: bolder;
-    box-shadow: 2px 2px 2px black;
-}
-
-.dashboard button:active {
-    transform: translate(2px,2px);
-    box-shadow: none;
-}
-
 /* Col and Box */
 .col {
     margin: auto;
@@ -87,4 +68,48 @@ form .checkbox-form {
     color: red;
     font-size: medium;
     font-weight: normal;
+}
+
+
+/* Dashboard */
+.dashboard {
+    flex-direction: column;
+    align-items: center;
+}
+.dashboard * {
+    margin-bottom: 20px;
+}
+.dashboard button {
+    padding: 10px 20px;
+    font-weight: bolder;
+    box-shadow: 2px 2px 2px black;
+}
+
+.dashboard button:active {
+    transform: translate(2px,2px);
+    box-shadow: none;
+}
+.message-board {
+    display: flex;
+    justify-content: space-evenly;
+    width: 80%;
+    height: 800px;
+}
+.message-board > div {
+    background-color: aliceblue;
+    padding: 10px 15px;
+    width: 80%;
+    margin: 10px;
+    border-radius: 10px;
+    overflow-y: auto;
+}
+.message-board > div > div {
+    border: 1px solid black;
+    padding: 5px;
+}
+.message-form *{
+    margin-bottom: 5px;
+}
+.message-form div textarea {
+    resize: none;
 }

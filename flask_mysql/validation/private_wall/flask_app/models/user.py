@@ -2,6 +2,7 @@ from flask_app.config.mysqlconnection import connectToMySQL
 from flask import flash, session
 import re
 from flask_app import bcrypt, DATABASE
+from flask_app.models.friendship import Friendship
 
 EMAIL_REGEX = re.compile(r'^[a-zA-Z0-9.+_-]+@[a-zA-Z0-9._-]+\.[a-zA-Z]+$')
 PASSWORD_REGEX = re.compile(r'(?=.*[0-9])(?=.*[A-Z])([A-Za-z0-9]+)')
@@ -15,7 +16,7 @@ class User:
         self.password = data['password']
         self.created_at = data['created_at']
         self.updated_at = data['updated_at']
-        
+        self.friends = []
         
     @classmethod
     def get_all(cls):
@@ -27,6 +28,7 @@ class User:
         for user in result:
             users.append(cls(user))
         return users
+    
     
     @classmethod
     def insert(cls, data):
@@ -109,10 +111,11 @@ class User:
     @staticmethod
     def check_password(data):
         query = "SELECT * From users WHERE email=%(email)s"
-        result = connectToMySQL(database).query_db(query, data)
+        result = connectToMySQL(DATABASE).query_db(query, data)
         if len(result) < 1:
             return True
-        if bcrypt.check_password_hash(result[0]['password'], data['password']):
+        # if bcrypt.check_password_hash(result[0]['password'], data['password']):
+        if result[0]['password'] == data['password']:
             session['uuid'] = result[0]['id']
             return False
         return True
