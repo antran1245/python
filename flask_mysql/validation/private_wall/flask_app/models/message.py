@@ -43,7 +43,6 @@ class Message:
     def validate_send_message(data, id):
         is_valid = True
         if len(data['message']) < 5:
-            print("wwwwwwwwwwwwwwehhe")
             flash("Message need to have a minimum of 5 chars.", id)
             is_valid = False
         return is_valid
