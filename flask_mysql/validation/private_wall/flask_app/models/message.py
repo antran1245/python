@@ -37,3 +37,4 @@ class Message:
     def delete(cls, data):
         query = "DELETE FROM messages WHERE id=%(id)s"
         return connectToMySQL(DATABASE).query_db(query, data)
+    

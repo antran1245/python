@@ -9,14 +9,21 @@
     </head>
     <body>
         <div class="container dashboard">
-            <h1>Welcome !!!!</h1>
+            <div class="header">
+                <h1>Coding Dojo Wall</h1>
+                <h1>Welcome {{user.first_name}}!!!!</h1>
+                <a href="/logout"><button class="logout">Logout</button></a>
+            </div>
             <div class="message-board">
                 <div>
                     <h3><span>{{messages|length}}</span> Messages</h3>
                     {% for message in messages %}
                         <div>
-                            <p>{{message.friend_first_name}} {{message.friend_last_name}} said </p>
-                            <p>"{{message.content}}"</p>
+                            <div>
+                                <p>{{message.friend_first_name}} {{message.friend_last_name}} said </p>
+                                <p>"{{message.content}}"</p>
+                            </div>
+                            <a href="/message/remove/{{message.id}}"><button>Remove</button></a>
                         </div>
                     {% endfor %}
                     
@@ -35,8 +42,16 @@
                         </form>
                     {% endfor %}
                 </div>
+                <div>
+                    <h3>Possible Friends</h3>
+                    {% for friend in possibles %}
+                        <div class="possible-friend">
+                            <p>{{friend.first_name}} {{friend.last_name}}</p>
+                            <a href="/addFriend/{{user.id}}/{{friend.id}}"><button>Add as a friend</button></a>
+                        </div>
+                    {% endfor %}
+                </div>
             </div>
-            <a href="/logout"><button class="logout">Logout</button></a>
         </div>
     </body>
 </html>

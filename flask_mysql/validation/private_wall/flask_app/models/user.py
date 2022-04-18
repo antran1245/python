@@ -16,19 +16,15 @@ class User:
         self.password = data['password']
         self.created_at = data['created_at']
         self.updated_at = data['updated_at']
-        self.friends = []
         
     @classmethod
     def get_all(cls):
         query = "SELECT * FROM users"
-        
         result = connectToMySQL(DATABASE).query_db(query)
-        
         users = []
         for user in result:
             users.append(cls(user))
         return users
-    
     
     @classmethod
     def insert(cls, data):
@@ -37,18 +33,18 @@ class User:
     
     @classmethod
     def select(cls,data):
-        query = "SELECT * FROM users WHERE id=%(id)s;"
+        query = "SELECT * FROM users WHERE id=%(user_id)s;"
         result = connectToMySQL(DATABASE).query_db(query, data)
         return cls(result[0])
     
     @classmethod
     def update(cls,data):
-        query = "UPDATE users SET first_name=%(first_name)s, last_name=%(last_name)s, email=%(email)s, updated_at=NOW() WHERE id=%(id)s"
+        query = "UPDATE users SET first_name=%(first_name)s, last_name=%(last_name)s, email=%(email)s, updated_at=NOW() WHERE id=%(user_id)s"
         return connectToMySQL(DATABASE).query_db(query, data)
     
     @classmethod
     def delete(cls, data):
-        query = "DELETE FROM users WHERE id=%(id)s"
+        query = "DELETE FROM users WHERE id=%(user_id)s"
         return connectToMySQL(DATABASE).query_db(query, data)
     
     @staticmethod
@@ -114,8 +110,40 @@ class User:
         result = connectToMySQL(DATABASE).query_db(query, data)
         if len(result) < 1:
             return True
-        # if bcrypt.check_password_hash(result[0]['password'], data['password']):
-        if result[0]['password'] == data['password']:
+        if bcrypt.check_password_hash(result[0]['password'], data['password']):
+        # if result[0]['password'] == data['password']:
             session['uuid'] = result[0]['id']
             return False
         return True
+    
+    @staticmethod
+    def get_name(data):
+        query = "SELECT id, first_name, last_name From users WHERE id=%(user_id)s;"
+        result = connectToMySQL(DATABASE).query_db(query, data)
+        data = {
+            "id" : result[0]['id'],
+            "first_name": result[0]['first_name'],
+            "last_name" : result[0]['last_name']
+        }
+        return data
+    
+    @classmethod
+    def get_all_possible_friends(cls, data):
+        query = "SELECT * FROM users WHERE id!=%(user_id)s;"
+        result = connectToMySQL(DATABASE).query_db(query, data)
+        
+        all_friends = Friendship.get_all_friend(data)
+        all_friends_id = []
+        for friend in all_friends:
+            all_friends_id.append(friend['friend_id'])
+            
+        all_users = []
+        for user in result:
+            if user['id'] not in all_friends_id:
+                data = {
+                    "id" : user['id'],
+                    "first_name" : user['first_name'],
+                    "last_name" : user['last_name']
+                }
+                all_users.append(data)
+        return all_users

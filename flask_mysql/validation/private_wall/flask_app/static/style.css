@@ -79,6 +79,13 @@ form .checkbox-form {
 .dashboard * {
     margin-bottom: 20px;
 }
+.dashboard .header {
+    display: flex;
+    width: 100%;
+}
+.dashboard .header *, .dashboard .header a {
+    margin: auto;
+}
 .dashboard button {
     padding: 10px 20px;
     font-weight: bolder;
@@ -102,6 +109,7 @@ form .checkbox-form {
     margin: 10px;
     border-radius: 10px;
     overflow-y: auto;
+    scrollbar-width: none;
 }
 .message-board > div > div {
     border: 1px solid black;
@@ -112,4 +120,8 @@ form .checkbox-form {
 }
 .message-form div textarea {
     resize: none;
+}
+.message-form .possible-friend {
+    display:  flex;
+    flex-direction: column;
 }

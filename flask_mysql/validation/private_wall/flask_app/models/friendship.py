@@ -47,7 +47,7 @@ class Friendship:
         users = []
         for user in result:
             data = {
-                "id" : user['users.id'],
+                "id" : user['user_id'],
                 "friend_id" : user['friend_id'],
                 "friend_first_name": user['first_name'],
                 "friend_last_name" : user['last_name'],
@@ -57,17 +57,9 @@ class Friendship:
             users.append((data))
         return users
     
-    # @classmethod
-    # def get_messages_from(cls, data):
-    #     query = "SELECT * FROM friendships WHERE user_id=%(user_id)s AND friend_id=%(friend_id)s;"
-    #     result = connectToMySQL(DATABASE).query_db(query, data)
-    #     friendship = cls(result[0])
-    #     data = {"friendship_id": friendship.id}
-    #     return Message.get_all_messages(data)
-    
     @classmethod
     def get_messages_from(cls, data):
-        query = "SELECT * FROM friendships LEFT JOIN messages ON friendships.id=messages.friendship_id LEFT JOIN users ON friendships.friend_id = users.id WHERE friendships.user_id=%(user_id)s;"
+        query = "SELECT * FROM friendships JOIN messages ON friendships.id=messages.friendship_id LEFT JOIN users ON friendships.friend_id = users.id WHERE friendships.user_id=%(user_id)s;"
         result = connectToMySQL(DATABASE).query_db(query, data)
         friend_message = []
         for message in result:
@@ -83,3 +75,12 @@ class Friendship:
             }
             friend_message.append(data)
         return friend_message
+    
+    @staticmethod
+    def get_friendship_id(data):
+        query = "SELECT id FROM friendships WHERE user_id=%(friend_id)s AND friend_id=%(user_id)s;"
+        result = connectToMySQL(DATABASE).query_db(query,data)
+        print(data)
+        print(result)
+        id = result[0]['id']
+        return id

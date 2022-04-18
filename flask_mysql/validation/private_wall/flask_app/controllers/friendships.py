@@ -2,34 +2,35 @@ from flask_app import app, bcrypt
 from flask import render_template, request, redirect, url_for, session
 
 from flask_app.models.friendship import Friendship
-
-@app.route('/friendships')
-def info():
-    data = {
-        "user_id": 1,
-        "friend_id": 2
-    }
-    info = Friendship.get_messages_from(data)
-    print(info.messages)
-    return redirect('/')
+from flask_app.models.user import User
 
 @app.route('/dashboard')
 def showDashboard():
-    # if 'remember' in session:
-    #     if 'uuid' in session:
-    #         data = {
-    #             "id" : session['uuid']
-    #         }
-    #         user = User.select(data)
-    #         if session['remember'] == 'off':
-    #             del session['uuid']
-    #             del session['remember']
-    #         return render_template('dashboard.html', user=user)
+    if 'remember' in session:
+        if 'uuid' in session:
+            data = {
+                "user_id" : session['uuid']
+            }
+            user = User.get_name(data)
+            if session['remember'] == 'off':
+                del session['uuid']
+                del session['remember']
+            message = Friendship.get_messages_from(data)
+            friends = Friendship.get_all_friend(data)
+            possibles = User.get_all_possible_friends(data)
+            return render_template('dashboard.html', messages=message, friends=friends, user=user, possibles=possibles)
+    return redirect('/')
+
+@app.route('/addFriend/<int:user>/<int:friend>')
+def addFriendship(user, friend):
     data = {
-        "user_id": 1,
+        "user_id": user,
+        "friend_id": friend
     }
-    message = Friendship.get_messages_from(data)
-    print(message)
-    friends = Friendship.get_all_friend(data)
-    print(friends)
-    return render_template('dashboard.html', messages=message, friends=friends)
+    Friendship.insert(data)
+    data = {
+        "user_id": friend,
+        "friend_id": user
+    }
+    Friendship.insert(data)
+    return redirect('/dashboard')
