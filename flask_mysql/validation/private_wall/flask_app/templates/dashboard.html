@@ -35,6 +35,9 @@
                             <div>
                                 <label for="message">{{user.friend_first_name}} {{user.friend_last_name}}</label>
                                 <textarea name="message" rows="3" cols="4" wrap="hard"></textarea>
+                                {% for error in get_flashed_messages(category_filter=[user.friend_id]) %}
+                                    <p class="error">{{error}}<p>
+                                {% endfor %}
                             </div>
                             <div>
                                 <input type="submit" value="Send"/>

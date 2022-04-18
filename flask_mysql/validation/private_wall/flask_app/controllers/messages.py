@@ -10,7 +10,6 @@ def removeMessage(id):
         "id" : id
     }
     Message.delete(data)
-    print('here')
     return redirect('/dashboard')
 
 @app.route('/send/<int:user_id>/<int:friend_id>', methods=['POST'])
@@ -24,6 +23,6 @@ def sendMessage(user_id, friend_id):
         "friendship_id": friendship_id,
         "content": request.form['message']
     }
-    Message.insert(data)
-    print("HERE")
+    if Message.validate_send_message(request.form, friend_id):
+        Message.insert(data)
     return redirect('/dashboard')

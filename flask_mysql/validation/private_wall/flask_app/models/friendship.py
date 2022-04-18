@@ -80,7 +80,5 @@ class Friendship:
     def get_friendship_id(data):
         query = "SELECT id FROM friendships WHERE user_id=%(friend_id)s AND friend_id=%(user_id)s;"
         result = connectToMySQL(DATABASE).query_db(query,data)
-        print(data)
-        print(result)
         id = result[0]['id']
         return id

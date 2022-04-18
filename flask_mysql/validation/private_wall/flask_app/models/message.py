@@ -1,5 +1,6 @@
 from flask_app.config.mysqlconnection import connectToMySQL
 from flask_app import DATABASE;
+from flask import flash
 class Message:
     
     def __init__(self, data):
@@ -38,3 +39,11 @@ class Message:
         query = "DELETE FROM messages WHERE id=%(id)s"
         return connectToMySQL(DATABASE).query_db(query, data)
     
+    @staticmethod
+    def validate_send_message(data, id):
+        is_valid = True
+        if len(data['message']) < 5:
+            print("wwwwwwwwwwwwwwehhe")
+            flash("Message need to have a minimum of 5 chars.", id)
+            is_valid = False
+        return is_valid
