@@ -9,27 +9,9 @@ body {
 .container {
     display: flex;
     justify-content: center;
-    flex-wrap: wrap;
-    padding: 20px;
 }
-
-/* Dashboard */
-.dashboard {
-    flex-direction: column;
-    align-items: center;
-}
-.dashboard * {
-    margin-bottom: 20px;
-}
-.dashboard button {
-    padding: 10px 20px;
-    font-weight: bolder;
-    box-shadow: 2px 2px 2px black;
-}
-
-.dashboard button:active {
-    transform: translate(2px,2px);
-    box-shadow: none;
+.container .white-text {
+    color: white;
 }
 
 /* Col and Box */
@@ -87,4 +69,57 @@ form .checkbox-form {
     color: red;
     font-size: medium;
     font-weight: normal;
+}
+
+/* Dashboard */
+.dashboard {
+    flex-direction: column;
+    align-items: center;
+}
+.dashboard * {
+    margin-bottom: 20px;
+}
+.dashboard button {
+    padding: 10px 20px;
+    font-weight: bolder;
+    box-shadow: 2px 2px 2px black;
+    border: none;
+}
+
+.dashboard button:active {
+    transform: translate(2px,2px);
+    box-shadow: none;
+}
+.dashboard header {
+    display: flex;
+    width: 100%;
+    justify-content: space-evenly;
+    align-content: center;
+}
+.dashboard form {
+    color: white;
+}
+table {
+    border-collapse: collapse;
+    background-color: wheat;
+}
+table,th,tr {
+    border: 1px solid black;
+    padding: 10px;
+    width: 800px;
+}
+
+.dashboard form {
+    width: 60%;
+}
+.dashboard form input[type="date"]{
+    color: black;
+}
+.dashboard form input[type="radio"]{
+    width: 20px;
+}
+.info-box, .info-title {
+    background-color: wheat;
+    padding: 10px;
+    border-radius: 10px;
 }

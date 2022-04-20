@@ -9,12 +9,33 @@
     </head>
     <body>
         <div class="container dashboard">
-            <div class="header">
+            <header>
                 <h1>Welcome {{user.first_name}}!!!!</h1>
                 <div>
-                    <a href="/create"><button>Create</button></a>
+                    <a href="/recipes/new"><button>Create</button></a>
                     <a href="/logout"><button>Logout</button></a>
                 </div>
+            </header>
+            <div>
+                <p class="white-text">These are the recipes</p>
+                <table>
+                    <tr>
+                        <th>Name</th>
+                        <th>Under 30 Minutes?</th>
+                        <th>Actions</th>
+                    </tr>
+                    {% for recipe in user.recipes %}
+                        <tr>
+                            <td>{{recipe.name}}</td>
+                            <td>{{recipe.time}}</td>
+                            <td>
+                                <a href="/recipes/{{recipe.id}}">view instructions</a>
+                                <a href="/recipes/edit/{{recipe.id}}">edit</a>
+                                <a href="/recipes/delete/{{recipe.id}}">delete</a>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                </table>
             </div>
         </div>
     </body>

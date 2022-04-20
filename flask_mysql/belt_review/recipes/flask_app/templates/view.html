@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="{{url_for('static', filename="style.css")}}">
+        <title>View</title>
+    </head>
+    <body>
+        <div class="container dashboard">
+            <header>
+                <h1>Welcome {{recipe.first_name}}!!!!</h1>
+                <div>
+                    <a href="/dashboard"><button>Dashboard</button></a>
+                    <a href="/logout"><button>Logout</button></a>
+                </div>
+            </header>
+            <h2 class="info-title">{{recipe.name}}</h2>
+            <div class="info-box">
+                <p>Description: {{recipe.description}}</p>
+                <p>Under 30 minutes: {{recipe.time}}</p>
+                <p>Instructions: {{recipe.instructions}}</p>
+                <p>Date Made: {{recipe.created_at.strftime("%B %d, %Y")}}</p>
+            </div>
+        </div>
+    </body>
+</html>

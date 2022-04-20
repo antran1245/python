@@ -1,11 +1,10 @@
 from flask_app.config.mysqlconnection import connectToMySQL
 from flask import flash, session
 import re
-from flask_app import bcrypt
+from flask_app import bcrypt, DATABASE
 
 EMAIL_REGEX = re.compile(r'^[a-zA-Z0-9.+_-]+@[a-zA-Z0-9._-]+\.[a-zA-Z]+$')
 PASSWORD_REGEX = re.compile(r'(?=.*[0-9])(?=.*[A-Z])([A-Za-z0-9]+)')
-database='registrations_schema'
 class User:
     
     def __init__(self, data):
@@ -16,13 +15,14 @@ class User:
         self.password = data['password']
         self.created_at = data['created_at']
         self.updated_at = data['updated_at']
+        self.recipes = []
         
         
     @classmethod
     def get_all(cls):
         query = "SELECT * FROM users"
         
-        result = connectToMySQL(database).query_db(query)
+        result = connectToMySQL(DATABASE).query_db(query)
         
         users = []
         for user in result:
@@ -32,28 +32,28 @@ class User:
     @classmethod
     def insert(cls, data):
         query = "INSERT INTO users (first_name, last_name, email, password) VALUES (%(first_name)s,%(last_name)s,%(email)s, %(password)s);"
-        return connectToMySQL(database).query_db(query, data)
+        return connectToMySQL(DATABASE).query_db(query, data)
     
     @classmethod
     def select(cls,data):
         query = "SELECT * FROM users WHERE id=%(id)s;"
-        result = connectToMySQL(database).query_db(query, data)
+        result = connectToMySQL(DATABASE).query_db(query, data)
         return cls(result[0])
     
     @classmethod
     def update(cls,data):
         query = "UPDATE users SET first_name=%(first_name)s, last_name=%(last_name)s, email=%(email)s, updated_at=NOW() WHERE id=%(id)s"
-        return connectToMySQL(database).query_db(query, data)
+        return connectToMySQL(DATABASE).query_db(query, data)
     
     @classmethod
     def delete(cls, data):
         query = "DELETE FROM users WHERE id=%(id)s"
-        return connectToMySQL(database).query_db(query, data)
+        return connectToMySQL(DATABASE).query_db(query, data)
     
     @staticmethod
     def validate_email_exist(data):
         query = "SELECT * From users WHERE email=%(email)s"
-        result = connectToMySQL(database).query_db(query, data)
+        result = connectToMySQL(DATABASE).query_db(query, data)
         if len(result) < 1:
             return True
         return False
@@ -110,7 +110,7 @@ class User:
     @staticmethod
     def check_password(data):
         query = "SELECT * From users WHERE email=%(email)s"
-        result = connectToMySQL(database).query_db(query, data)
+        result = connectToMySQL(DATABASE).query_db(query, data)
         if len(result) < 1:
             return True
         if bcrypt.check_password_hash(result[0]['password'], data['password']):
